@@ -1,2 +1,3 @@
 # ControlesCustomsXamarinForms
-[![Demo Doccou alpha](https://www.youtube.com/watch?v=5Lk-i-dQ6Jo&feature=youtu.be)](https://www.youtube.com/watch?v=5Lk-i-dQ6Jo&feature=youtu.be)
+
+https://github.com/fabien367/ControlesCustomsXamarinForms/issues/1#issue-419703218
