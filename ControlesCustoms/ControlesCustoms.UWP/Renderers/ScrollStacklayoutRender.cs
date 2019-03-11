@@ -1,6 +1,7 @@
 ﻿using ControlesCustoms.Standard.Stacklayouts;
 using ControlesCustoms.UWP.Previews;
 using ControlesCustoms.UWP.Renderers;
+using System;
 using System.ComponentModel;
 using System.Diagnostics;
 using Windows.UI.Core;
@@ -14,6 +15,11 @@ namespace ControlesCustoms.UWP.Renderers
 {
     public class ScrollStacklayoutRender : ViewRenderer<ScrollStacklayout, ScrollStacklayoutPreview>
     {
+        public async static void Init()
+#pragma warning restore CS1998 
+        {
+            var temp = DateTime.Now;
+        }
         ScrollStacklayout _control;
         readonly CoreDispatcher _dispatcher = Window.Current.Dispatcher;
         double _position = 0;

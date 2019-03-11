@@ -5,7 +5,7 @@
              x:Class="ControlesCustoms.Sample.MainPage"
              xmlns:Customs="clr-namespace:ControlesCustoms.Standard.Stacklayouts;assembly=ControlesCustoms.Standard">
     <AbsoluteLayout x:Name="AbsoluteContent">
-        <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+        <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" BackgroundColor="ForestGreen">
             <!-- Place new controls here -->
             <Label Text="Welcome to Xamarin.Forms!" 
            HorizontalOptions="Center"
@@ -14,7 +14,7 @@
         <Customs:ScrollStacklayout  AbsoluteLayout.LayoutBounds="1,0.5,1,1"
                          IsVisible="True"
                          AbsoluteLayout.LayoutFlags="All"
-                         BackgroundColor="#25ffffff" HeightAncre="20">
+                         BackgroundColor="#25ffffff" HeightAncre="25">
             <StackLayout BackgroundColor="Transparent" >
                 <Image Source="SLider.png" HeightRequest="25"></Image>
                 
