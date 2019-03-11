@@ -10,12 +10,12 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 
-namespace ControlesCustoms.Previews
+namespace ControlesCustoms.Android.Previews
 {
-    public class ScrollStacklayoutPreview : Android.Views.View
+    public class ScrollStacklayoutPreview : View
     {
 
-        Android.Views.View view;
+        View view;
         public ScrollStacklayoutPreview(Context context) : base(context)
         {
             view = new View(context);

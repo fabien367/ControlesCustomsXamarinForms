@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ControlesCustoms.Sample"
+             x:Class="ControlesCustoms.Sample.MainPage"
+             xmlns:Customs="clr-namespace:ControlesCustoms.Standard.Stacklayouts;assembly=ControlesCustoms.Standard">
+    <AbsoluteLayout x:Name="AbsoluteContent">
+        <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+            <!-- Place new controls here -->
+            <Label Text="Welcome to Xamarin.Forms!" 
+           HorizontalOptions="Center"
+           VerticalOptions="CenterAndExpand" />
+        </StackLayout>
+        <Customs:ScrollStacklayout  AbsoluteLayout.LayoutBounds="1,0.5,1,1"
+                         IsVisible="True"
+                         AbsoluteLayout.LayoutFlags="All"
+                         BackgroundColor="#25ffffff" HeightAncre="20">
+            <StackLayout BackgroundColor="Transparent" >
+                <Image Source="SLider.png" HeightRequest="25"></Image>
+                
+            </StackLayout>
+        </Customs:ScrollStacklayout>
+    </AbsoluteLayout>
+
+</ContentPage>

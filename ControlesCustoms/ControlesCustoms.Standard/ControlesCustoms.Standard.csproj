@@ -6,8 +6,9 @@
     <Authors>NeoFabien</Authors>
     <Product>ControlesCustoms</Product>
     <Description>Controles Customs for Xamarin Forms</Description>
-    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Version>1.0.3</Version>
   </PropertyGroup>
 
   <ItemGroup>

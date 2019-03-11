@@ -9,9 +9,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: global::Android.Runtime.ResourceDesignerAttribute("ControlesCustoms.Resource", IsApplication=false)]
+[assembly: global::Android.Runtime.ResourceDesignerAttribute("ControlesCustoms.Android.Resource", IsApplication=false)]
 
-namespace ControlesCustoms
+namespace ControlesCustoms.Android
 {
 	
 	

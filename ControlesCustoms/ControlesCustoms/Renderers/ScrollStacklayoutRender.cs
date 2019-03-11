@@ -1,8 +1,8 @@
 ﻿using Android.Content;
 using Android.Runtime;
 using Android.Views;
-using ControlesCustoms.Previews;
-using ControlesCustoms.Renderers;
+using ControlesCustoms.Android.Previews;
+using ControlesCustoms.Android.Renderers;
 using ControlesCustoms.Standard.Stacklayouts;
 using System;
 using System.ComponentModel;
@@ -11,11 +11,11 @@ using Xamarin.Forms.Platform.Android;
 using static Android.Views.Animations.Animation;
 
 [assembly: ExportRenderer(typeof(ScrollStacklayout), typeof(ScrollStacklayoutRender))]
-namespace ControlesCustoms.Renderers
+namespace ControlesCustoms.Android.Renderers
 {
     [Preserve(AllMembers = true)]
     
-    public class ScrollStacklayoutRender : ViewRenderer<ScrollStacklayout, ScrollStacklayoutPreview>, IAnimationListener
+    public class ScrollStacklayoutRender : ViewRenderer<ScrollStacklayout, ScrollStacklayoutPreview>
     {
         public ScrollStacklayoutRender() : base()
         {
@@ -83,20 +83,6 @@ namespace ControlesCustoms.Renderers
                 SetNativeControl(_stacklayout);
             }
         }
-
-        public void OnAnimationEnd(Android.Views.Animations.Animation animation)
-        {
-            Console.WriteLine("End");
-        }
-
-        public void OnAnimationRepeat(Android.Views.Animations.Animation animation)
-        {
-            Console.WriteLine("Repeat");
-        }
-
-        public void OnAnimationStart(Android.Views.Animations.Animation animation)
-        {
-            Console.WriteLine("Start");
-        }
+        
     }
 }
