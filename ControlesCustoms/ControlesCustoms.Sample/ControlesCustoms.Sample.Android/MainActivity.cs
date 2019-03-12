@@ -6,7 +6,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
-//using ControlesCustoms.Android.Renderers;
+using ControlesCustoms.Android.Renderers;
 
 namespace ControlesCustoms.Sample.Droid
 {
@@ -17,7 +17,7 @@ namespace ControlesCustoms.Sample.Droid
         {
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
-            //ScrollStacklayoutRender.Init();
+            ScrollStacklayoutRender.Init();
             base.OnCreate(savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             LoadApplication(new App());

@@ -17,7 +17,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControlesCustoms.Sample.iOS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControlesCustoms.Sample.UWP", "ControlesCustoms.Sample\ControlesCustoms.Sample.UWP\ControlesCustoms.Sample.UWP.csproj", "{6424BD8A-9CA7-4BA3-B15E-922F75BE5271}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControlesCustoms.Sample", "ControlesCustoms.Sample\ControlesCustoms.Sample\ControlesCustoms.Sample.csproj", "{0C95DE3A-9698-4AB3-AB01-F2273C71ADE5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ControlesCustoms.Sample", "ControlesCustoms.Sample\ControlesCustoms.Sample\ControlesCustoms.Sample.csproj", "{0C95DE3A-9698-4AB3-AB01-F2273C71ADE5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Video", "Video", "{1E7E05D8-C80E-4F3D-8CEA-1FA72BECF479}"
+	ProjectSection(SolutionItems) = preProject
+		C:\Users\fabien\Pictures\config3.6.jpg = C:\Users\fabien\Pictures\config3.6.jpg
+		Script1.js = Script1.js
+		C:\Users\fabien\Desktop\Sliderpopup.webm = C:\Users\fabien\Desktop\Sliderpopup.webm
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
