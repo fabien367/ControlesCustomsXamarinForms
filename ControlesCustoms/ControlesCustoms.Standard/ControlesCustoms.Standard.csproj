@@ -8,7 +8,12 @@
     <Description>Controles Customs for Xamarin Forms</Description>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <Version>1.0.4</Version>
+    <Version>1.0.5</Version>
+    <PackageLicenseUrl></PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/fabien367/ControlesCustomsXamarinForms</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/fabien367/ControlesCustomsXamarinForms</RepositoryUrl>
+    <AssemblyVersion>1.0.5.0</AssemblyVersion>
+    <PackageReleaseNotes>Fix UWP</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>

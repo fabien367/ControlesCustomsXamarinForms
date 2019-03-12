@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using Xamarin.Forms;
 
 namespace ControlesCustoms.Standard.Stacklayouts
@@ -98,17 +99,42 @@ namespace ControlesCustoms.Standard.Stacklayouts
 
                     if (Xamarin.Essentials.DevicePlatform.UWP == Xamarin.Essentials.DeviceInfo.Platform)
                     {
-                        if (ReStartOffSetY!=0)
+                        if ((SizeUWP - HeightAncre) >= ReStartOffSetY + e.TotalY)
                         {
-                            OffSetY= ReStartOffSetY + e.TotalY;
+                            if (ReStartOffSetY != 0)
+                            {
+
+#if DEBUG
+                                Debug.WriteLine("Restart:" + ReStartOffSetY + e.TotalY);
+#endif
+                                OffSetY = ReStartOffSetY + e.TotalY;
+                            }
+                            else
+                            {
+
+#if DEBUG
+                                Debug.WriteLine("Change:" + e.TotalY);
+#endif
+                                OffSetY = e.TotalY;
+                            }
                         }
                         else
-                            OffSetY = e.TotalY;
+                        {
+
+#if DEBUG
+                            Debug.WriteLine("Taille max:" + (SizeUWP - HeightAncre));
+#endif
+                            OffSetY = (SizeUWP - HeightAncre);
+                            ReStartOffSetY = (SizeUWP - HeightAncre);
+                        }
                     }
                     else
                         OffSetY = e.TotalY;
                     break;
                 case GestureStatus.Completed:
+#if DEBUG
+                    Debug.WriteLine("Completed" + OffSetY);
+#endif
                     ReStartOffSetY = OffSetY;
                     break;
                 case GestureStatus.Started:
