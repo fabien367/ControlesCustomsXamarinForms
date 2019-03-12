@@ -2,8 +2,11 @@
 
 # Visual rendering
 
-
+UWP
 ![UWP](https://user-images.githubusercontent.com/20682036/54188985-227c9180-44b1-11e9-87c9-4b5e122b1299.gif)
+
+Android
+![Android](https://user-images.githubusercontent.com/20682036/54190851-fc58f080-44b4-11e9-944d-f75904558f6c.gif)
 
 
 Configuration UWP for add Image with Xamarin Form 3.6
@@ -14,6 +17,11 @@ There is a bug for adding image in Xamarin Forms to get around it you have to ge
 `<DisableWin2DPlatformCheck>true</DisableWin2DPlatformCheck>`
  in your csproj UWP
 
+Configuration Android
+
+Add in MainActivity.cs
+`ScrollStacklayoutRender.Init();`
+            
 
 # Code Xamarin Forms
 
