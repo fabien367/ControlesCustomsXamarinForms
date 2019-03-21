@@ -15,11 +15,6 @@ namespace ControlesCustoms.UWP.Renderers
 {
     public class ScrollStacklayoutRender : ViewRenderer<ScrollStacklayout, ScrollStacklayoutPreview>
     {
-        public async static void Init()
-#pragma warning restore CS1998 
-        {
-            var temp = DateTime.Now;
-        }
         ScrollStacklayout _control;
         readonly CoreDispatcher _dispatcher = Window.Current.Dispatcher;
         double _position = 0;
@@ -41,21 +36,28 @@ namespace ControlesCustoms.UWP.Renderers
         {
             var size = ApplicationView.GetForCurrentView().VisibleBounds;
             _control.SizeUWP = size.Height;
-            //_control.HeightAncre = _control.Children[0].Height;
             if (e.PropertyName == "OffSetY")
             {
                 var retour = _control.OffSetY;
-                _position = _position + retour;
-                Debug.WriteLine("Position initial du stack: " + _position);
+                Debug.WriteLine("Position en mouvement: " + retour);
+
                 RenderTransform = new CompositeTransform() { TranslateY = retour };
             }
+            else if (e.PropertyName == "Height")
+            {
+                _position = _control.TranslationY;
+                _control.TranslationY = (size.Height - _control.HeightAncre);
+                _control.ReStartOffSetY = _control.TranslationY;
 
-            else
+                Debug.WriteLine("Position initial du stack: " + e.PropertyName + ":" + _control.TranslationY);
+            }
+
+            else if (e.PropertyName == "Renderer")
             {
                 _control.TranslationY = (size.Height - _control.HeightAncre);
                 _control.ReStartOffSetY = _control.TranslationY;
 
-                Debug.WriteLine("Position initial du stack: " + _position);
+                Debug.WriteLine("Position initial du stack: " + e.PropertyName + ":" + _control.TranslationY);
             }
             base.OnElementPropertyChanged(sender, e);
         }
