@@ -18,7 +18,7 @@
                          Opacity="0.8"
                          Orientation="Vertical"
                          HeightChildren="{x:Binding Height,Source={x:Reference Container}, Mode=TwoWay}"
-                         HeightSplitter="{x:Binding Height,Source={x:Reference Spliter},Mode=TwoWay}">           
+                         HeightSpliter="{x:Binding Height,Source={x:Reference Spliter}, Mode=TwoWay}">           
             <CustomsControl:ScrollStacklayout.HeightAncre>
                 <OnPlatform Android="50" iOS="50"></OnPlatform>
             </CustomsControl:ScrollStacklayout.HeightAncre>

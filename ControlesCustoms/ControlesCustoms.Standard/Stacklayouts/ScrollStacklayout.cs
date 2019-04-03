@@ -31,8 +31,8 @@ namespace ControlesCustoms.Standard.Stacklayouts
             if (Y != HeightNavigation - HeightAncre)
             {
                 HeightWithorWithoutNavigation = (HeightNavigation - height);
-                this.TranslationY = HeightNavigation - (HeightSplitter + HeightWithorWithoutNavigation);
-                Position = HeightNavigation - (HeightSplitter + HeightWithorWithoutNavigation);
+                this.TranslationY = HeightNavigation - (HeightAncre + HeightWithorWithoutNavigation);
+                Position = HeightNavigation - (HeightAncre + HeightWithorWithoutNavigation);
             }
         }
         /// <summary>
@@ -47,8 +47,8 @@ namespace ControlesCustoms.Standard.Stacklayouts
             if (Y != HeightNavigation - HeightAncre)
             {
                 HeightWithorWithoutNavigation = (HeightNavigation - height);
-                this.TranslationY = HeightNavigation - (HeightSplitter+ HeightWithorWithoutNavigation);
-                Position = HeightNavigation - (HeightSplitter + HeightWithorWithoutNavigation);
+                this.TranslationY = HeightNavigation - (HeightSpliter+ HeightWithorWithoutNavigation);
+                Position = HeightNavigation - (HeightSpliter + HeightWithorWithoutNavigation);
             }
         }
         /// <summary>
@@ -63,8 +63,8 @@ namespace ControlesCustoms.Standard.Stacklayouts
             if (Y != HeightNavigation - HeightAncre)
             {
                 HeightWithorWithoutNavigation = (HeightNavigation - height);
-                this.TranslationY = HeightNavigation - (HeightSplitter + HeightWithorWithoutNavigation);
-                Position = HeightNavigation - (HeightSplitter + HeightWithorWithoutNavigation);
+                this.TranslationY = HeightNavigation - (HeightAncre + HeightWithorWithoutNavigation);
+                Position = HeightNavigation - (HeightAncre + HeightWithorWithoutNavigation);
                 //this.TranslationY = HeightNavigation - HeightAncre;
                 //Position = HeightNavigation - HeightAncre;
             }
@@ -169,19 +169,19 @@ namespace ControlesCustoms.Standard.Stacklayouts
             }
         }
 
-        public static readonly BindableProperty HeightSplitterProperty = BindableProperty.Create(
-          "HeightSplitter",
+        public static readonly BindableProperty HeightSpliterProperty = BindableProperty.Create(
+          "HeightSpliter",
           returnType: typeof(double),
           declaringType: typeof(ScrollStacklayout),
           defaultValue: 0d,
           defaultBindingMode: BindingMode.TwoWay);
-        public double HeightSplitter
+        public double HeightSpliter
         {
 
-            get { return (double)GetValue(HeightSplitterProperty); }
+            get { return (double)GetValue(HeightSpliterProperty); }
             set
             {
-                SetValue(HeightSplitterProperty, value);
+                SetValue(HeightSpliterProperty, value);
             }
         }
         public double HeightNavigation
@@ -246,7 +246,7 @@ namespace ControlesCustoms.Standard.Stacklayouts
         /// <param name="e">E.</param>
         private void MoveDroid(PanUpdatedEventArgs e)
         {
-            double positionNotPassed = HeightChildren > Position ? 0 : (Position - HeightChildren + HeightSplitter + 20);
+            double positionNotPassed = HeightChildren > Position ? 0 : (Position - HeightChildren + HeightSpliter + 20);
             if (ReStartOffSetY != 0)
             {
                 // dépasse pas l'écran
@@ -298,7 +298,7 @@ namespace ControlesCustoms.Standard.Stacklayouts
         /// <param name="e">E.</param>
         private void MoveIOS(PanUpdatedEventArgs e)
         {
-            double positionNotPassed = HeightChildren > Position ? 0 : (Position - HeightChildren + HeightSplitter);
+            double positionNotPassed = HeightChildren > Position ? 0 : (Position - HeightChildren + HeightSpliter);
             if (ReStartOffSetY != 0)
             {
                 // dépasse pas l'écran
@@ -346,7 +346,7 @@ namespace ControlesCustoms.Standard.Stacklayouts
         /// <param name="e">E.</param>
         private void MoveUWP(PanUpdatedEventArgs e)
         {
-            double positionNotPassed = HeightChildren > Position ? 0 : (Position - HeightChildren + HeightSplitter );
+            double positionNotPassed = HeightChildren > Position ? 0 : (Position - HeightChildren + HeightSpliter );
             if (ReStartOffSetY != 0)
             {
                 // dépasse pas l'écran

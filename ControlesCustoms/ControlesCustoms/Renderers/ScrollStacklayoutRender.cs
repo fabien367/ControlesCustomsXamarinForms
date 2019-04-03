@@ -91,7 +91,7 @@ namespace ControlesCustoms.Android.Renderers
 
         private double MoveAndroid()
         {
-            double positionNotPassed = _control.HeightChildren > _control.Position ? 0 : (_control.Position - _control.HeightChildren + _control.HeightSplitter + 20);
+            double positionNotPassed = _control.HeightChildren > _control.Position ? 0 : (_control.Position - _control.HeightChildren + _control.HeightSpliter + 20);
             return positionNotPassed;
         }
     }
