@@ -49,9 +49,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="ControlesCustoms.Standard">
-      <Version>1.0.4</Version>
-    </PackageReference>
     <PackageReference Include="Xamarin.Forms" Version="3.6.0.220655" />
     <PackageReference Include="Xamarin.Android.Support.Design" Version="27.0.2.1" />
     <PackageReference Include="Xamarin.Android.Support.v7.AppCompat" Version="27.0.2.1" />
@@ -88,17 +85,33 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\launcher_foreground.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Resources\drawable-hdpi\" />
     <Folder Include="Resources\drawable-xhdpi\" />
     <Folder Include="Resources\drawable-xxhdpi\" />
     <Folder Include="Resources\drawable-xxxhdpi\" />
-    <Folder Include="Resources\drawable\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\ControlesCustoms.Standard\ControlesCustoms.Standard.csproj">
+      <Project>{ead970ef-75a2-4396-aff8-f594ad0e2c45}</Project>
+      <Name>ControlesCustoms.Standard</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ControlesCustoms\ControlesCustoms.Android.csproj">
+      <Project>{7a016682-3070-4404-ad4e-656aab582cfb}</Project>
+      <Name>ControlesCustoms.Android</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ControlesCustoms.Sample\ControlesCustoms.Sample.csproj">
       <Project>{5EE3DE79-2F71-4F7C-8BD7-1AD02C5D2A04}</Project>
       <Name>ControlesCustoms.Sample</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\Slider.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-hdpi\Slider.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AndroidResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

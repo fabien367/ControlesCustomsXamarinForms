@@ -164,6 +164,14 @@
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.1.5" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\ControlesCustoms.Standard\ControlesCustoms.Standard.csproj">
+      <Project>{ead970ef-75a2-4396-aff8-f594ad0e2c45}</Project>
+      <Name>ControlesCustoms.Standard</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ControlesCustoms.UWP\ControlesCustoms.UWP.csproj">
+      <Project>{78b083e9-875c-4b7b-9ea2-3b68ef86194e}</Project>
+      <Name>ControlesCustoms.UWP</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ControlesCustoms.Sample\ControlesCustoms.Sample.csproj">
       <Project>{5EE3DE79-2F71-4F7C-8BD7-1AD02C5D2A04}</Project>
       <Name>ControlesCustoms.Sample</Name>

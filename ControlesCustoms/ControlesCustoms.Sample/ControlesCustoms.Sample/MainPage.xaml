@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:ControlesCustoms.Sample"
              x:Class="ControlesCustoms.Sample.MainPage"
-             xmlns:Customs="clr-namespace:ControlesCustoms.Standard.Stacklayouts;assembly=ControlesCustoms.Standard">
+             xmlns:CustomsControl="clr-namespace:ControlesCustoms.Standard.Stacklayouts;assembly=ControlesCustoms.Standard">
     <AbsoluteLayout x:Name="AbsoluteContent">
         <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" BackgroundColor="ForestGreen">
             <!-- Place new controls here -->
@@ -11,15 +11,49 @@
            HorizontalOptions="Center"
            VerticalOptions="CenterAndExpand" />
         </StackLayout>
-        <Customs:ScrollStacklayout  AbsoluteLayout.LayoutBounds="1,0.5,1,1"
+        <CustomsControl:ScrollStacklayout BackgroundColor="Transparent"
+                         AbsoluteLayout.LayoutBounds="0,0,1,1"
                          IsVisible="True"
                          AbsoluteLayout.LayoutFlags="All"
-                         BackgroundColor="#25ffffff" HeightAncre="25">
-            <StackLayout BackgroundColor="Transparent" >
-                <Image Source="SLider.png" HeightRequest="25"></Image>
-                
+                         Opacity="0.8"
+                         Orientation="Vertical"
+                         HeightChildren="{x:Binding Height,Source={x:Reference Container}, Mode=TwoWay}"
+                         HeightSplitter="{x:Binding Height,Source={x:Reference Spliter},Mode=TwoWay}">           
+            <CustomsControl:ScrollStacklayout.HeightAncre>
+                <OnPlatform Android="50" iOS="50"></OnPlatform>
+            </CustomsControl:ScrollStacklayout.HeightAncre>
+            <StackLayout BackgroundColor="#FF1D2531" x:Name="Container">
+                <StackLayout BackgroundColor="Transparent" HeightRequest="50" x:Name="Spliter">
+                    <Image Source="Slider.png" HeightRequest="50"></Image>
+                </StackLayout>
+                <FlexLayout HeightRequest="150" BackgroundColor="Transparent" Direction="Column" JustifyContent="Center" Wrap="Wrap">
+                    <StackLayout  Orientation="Vertical">
+                        <Image Source="Slider.png" HeightRequest="75"></Image>
+                        <Label  Text="User" HorizontalTextAlignment="Center"
+                                VerticalTextAlignment="Center" VerticalOptions="Center" TextColor="White">                            
+                        </Label>
+                    </StackLayout>
+                    <StackLayout  Orientation="Vertical">
+                        <Image Source="Slider.png" HeightRequest="75"></Image>
+                        <Label  Text="User" HorizontalTextAlignment="Center"
+                                VerticalTextAlignment="Center" VerticalOptions="Center" TextColor="White">
+                        </Label>
+                    </StackLayout>
+                    <StackLayout  Orientation="Vertical">
+                        <Image Source="Slider.png" HeightRequest="75"></Image>
+                        <Label  Text="User" HorizontalTextAlignment="Center"
+                                VerticalTextAlignment="Center" VerticalOptions="Center" TextColor="White">
+                        </Label>
+                    </StackLayout>
+                    <StackLayout  Orientation="Vertical">
+                        <Image Source="Slider.png" HeightRequest="75"></Image>
+                        <Label  Text="User" HorizontalTextAlignment="Center"
+                                VerticalTextAlignment="Center" VerticalOptions="Center" TextColor="White">
+                        </Label>
+                    </StackLayout>
+                </FlexLayout>
             </StackLayout>
-        </Customs:ScrollStacklayout>
+        </CustomsControl:ScrollStacklayout>
     </AbsoluteLayout>
 
 </ContentPage>

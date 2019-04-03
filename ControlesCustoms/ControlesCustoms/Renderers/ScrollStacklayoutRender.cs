@@ -1,6 +1,5 @@
 ﻿using Android.Content;
 using Android.Runtime;
-using Android.Views;
 using ControlesCustoms.Android.Previews;
 using ControlesCustoms.Android.Renderers;
 using ControlesCustoms.Standard.Stacklayouts;
@@ -8,7 +7,6 @@ using System;
 using System.ComponentModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
-using static Android.Views.Animations.Animation;
 
 [assembly: ExportRenderer(typeof(ScrollStacklayout), typeof(ScrollStacklayoutRender))]
 namespace ControlesCustoms.Android.Renderers
@@ -17,6 +15,7 @@ namespace ControlesCustoms.Android.Renderers
 
     public class ScrollStacklayoutRender : ViewRenderer<ScrollStacklayout, ScrollStacklayoutPreview>
     {
+        int _coef;
         ScrollStacklayout _control;
         float _position;
         public double HeightScreen
@@ -53,23 +52,22 @@ namespace ControlesCustoms.Android.Renderers
                     var retour = (float)control.OffSetY;
                     var height = parent.Height;
                     var positionactuel = parent.GetY();
-                    if (control.WithNavigation && _position == 0)
+                   
+                    var positionNotPassed = MoveAndroid() * _coef;
+                    if (positionactuel + retour >= _control.Position*_coef)
                     {
-                        _position = positionactuel;
-                    }
-                    if (positionactuel + retour >= _position)
-                    {
-                        parent.SetY(_position);
                         control.ReStartOffSetY = 0;
                         return;
                     }
-                    parent.SetY(positionactuel + retour);
+                    else if (positionactuel + retour >= positionNotPassed)
+                        parent.SetY(positionactuel + retour);
+                    return;
                 }
 
-                else if (e.PropertyName == "Height" && !control.WithNavigation)
+                else if (e.PropertyName == "Height")
                 {
-                    int coef = (int)(control.SizeUWP / HeightScreen);
-                    parent.SetY((float)(control.SizeUWP - (control.HeightAncre * coef)));
+                    _coef = (int)(control.Size / HeightScreen);
+                    parent.SetY((float)(control.Size - (control.HeightAncre * _coef)));
                     _position = parent.GetY();
                 }
                 else
@@ -87,9 +85,14 @@ namespace ControlesCustoms.Android.Renderers
                 _stacklayout = new ScrollStacklayoutPreview(Context);
                 SetNativeControl(_stacklayout);
                 _control = e.NewElement;
-                _control.SizeUWP = Xamarin.Essentials.DeviceDisplay.MainDisplayInfo.Height;
+                _control.Size = Xamarin.Essentials.DeviceDisplay.MainDisplayInfo.Height;
             }
         }
 
+        private double MoveAndroid()
+        {
+            double positionNotPassed = _control.HeightChildren > _control.Position ? 0 : (_control.Position - _control.HeightChildren + _control.HeightSplitter + 20);
+            return positionNotPassed;
+        }
     }
 }

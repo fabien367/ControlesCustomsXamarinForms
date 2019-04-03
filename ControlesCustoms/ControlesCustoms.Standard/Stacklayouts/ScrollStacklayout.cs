@@ -7,8 +7,71 @@ namespace ControlesCustoms.Standard.Stacklayouts
     public class ScrollStacklayout : StackLayout
     {
 
-        #region Properties
+        protected override void LayoutChildren(double x, double y, double width, double height)
+        {
+            if ( Xamarin.Essentials.DevicePlatform.Android == Xamarin.Essentials.DeviceInfo.Platform)
+                LayoutChildrenAndroid(x, y, width, height);
+           else if ( Xamarin.Essentials.DevicePlatform.UWP == Xamarin.Essentials.DeviceInfo.Platform)
+                LayoutChildrenUWP(x, y, width, height);
+            else if (Xamarin.Essentials.DevicePlatform.iOS == Xamarin.Essentials.DeviceInfo.Platform)
+                LayoutChildrenIOS(x, y, width, height);
 
+            base.LayoutChildren(x, y, width, height);
+        }
+
+        /// <summary>
+        /// Layouts the children Android.
+        /// </summary>
+        /// <param name="x">The x coordinate.</param>
+        /// <param name="y">The y coordinate.</param>
+        /// <param name="width">Width.</param>
+        /// <param name="height">Height.</param>
+        private void LayoutChildrenAndroid(double x, double y, double width, double height)
+        {
+            if (Y != HeightNavigation - HeightAncre)
+            {
+                HeightWithorWithoutNavigation = (HeightNavigation - height);
+                this.TranslationY = HeightNavigation - (HeightSplitter + HeightWithorWithoutNavigation);
+                Position = HeightNavigation - (HeightSplitter + HeightWithorWithoutNavigation);
+            }
+        }
+        /// <summary>
+        /// Layouts the children uwp.
+        /// </summary>
+        /// <param name="x">The x coordinate.</param>
+        /// <param name="y">The y coordinate.</param>
+        /// <param name="width">Width.</param>
+        /// <param name="height">Height.</param>
+        private void LayoutChildrenUWP(double x, double y, double width, double height)
+        {
+            if (Y != HeightNavigation - HeightAncre)
+            {
+                HeightWithorWithoutNavigation = (HeightNavigation - height);
+                this.TranslationY = HeightNavigation - (HeightSplitter+ HeightWithorWithoutNavigation);
+                Position = HeightNavigation - (HeightSplitter + HeightWithorWithoutNavigation);
+            }
+        }
+        /// <summary>
+        /// Layouts the children ios.
+        /// </summary>
+        /// <param name="x">The x coordinate.</param>
+        /// <param name="y">The y coordinate.</param>
+        /// <param name="width">Width.</param>
+        /// <param name="height">Height.</param>
+        private void LayoutChildrenIOS(double x, double y, double width, double height)
+        {
+            if (Y != HeightNavigation - HeightAncre)
+            {
+                HeightWithorWithoutNavigation = (HeightNavigation - height);
+                this.TranslationY = HeightNavigation - (HeightSplitter + HeightWithorWithoutNavigation);
+                Position = HeightNavigation - (HeightSplitter + HeightWithorWithoutNavigation);
+                //this.TranslationY = HeightNavigation - HeightAncre;
+                //Position = HeightNavigation - HeightAncre;
+            }
+        }
+
+        #region Properties
+        public double HeightWithorWithoutNavigation { get; set; }
         public double Position
         { get; set; }
 
@@ -58,19 +121,19 @@ namespace ControlesCustoms.Standard.Stacklayouts
             }
         }
 
-        public static readonly BindableProperty SizeUWPProperty = BindableProperty.Create(
-           "SizeUWP",
+        public static readonly BindableProperty SizeProperty = BindableProperty.Create(
+           "Size",
            returnType: typeof(double),
            declaringType: typeof(ScrollStacklayout),
            defaultValue: 0d,
            defaultBindingMode: BindingMode.TwoWay);
-        public double SizeUWP
+        public double Size
         {
 
-            get { return (double)GetValue(SizeUWPProperty); }
+            get { return (double)GetValue(SizeProperty); }
             set
             {
-                SetValue(SizeUWPProperty, value);
+                SetValue(SizeProperty, value);
             }
         }
 
@@ -90,10 +153,42 @@ namespace ControlesCustoms.Standard.Stacklayouts
             }
         }
 
+        public static readonly BindableProperty HeightChildrenProperty = BindableProperty.Create(
+          "HeightChildren",
+          returnType: typeof(double),
+          declaringType: typeof(ScrollStacklayout),
+          defaultValue: 0d,
+          defaultBindingMode: BindingMode.TwoWay);
+        public double HeightChildren
+        {
+
+            get { return (double)GetValue(HeightChildrenProperty); }
+            set
+            {
+                SetValue(HeightChildrenProperty, value);
+            }
+        }
+
+        public static readonly BindableProperty HeightSplitterProperty = BindableProperty.Create(
+          "HeightSplitter",
+          returnType: typeof(double),
+          declaringType: typeof(ScrollStacklayout),
+          defaultValue: 0d,
+          defaultBindingMode: BindingMode.TwoWay);
+        public double HeightSplitter
+        {
+
+            get { return (double)GetValue(HeightSplitterProperty); }
+            set
+            {
+                SetValue(HeightSplitterProperty, value);
+            }
+        }
         public double HeightNavigation
         { get; set; }
-        #endregion
 
+
+        #endregion
 
 
 
@@ -106,6 +201,9 @@ namespace ControlesCustoms.Standard.Stacklayouts
 
 
 
+
+
+        #region Methodes de mouvements
         private void OnPanUpdated(object sender, PanUpdatedEventArgs e)
         {
 
@@ -115,26 +213,17 @@ namespace ControlesCustoms.Standard.Stacklayouts
 
                     if (Xamarin.Essentials.DevicePlatform.UWP == Xamarin.Essentials.DeviceInfo.Platform)
                     {
-                        if ((SizeUWP - HeightAncre) >= ReStartOffSetY + e.TotalY)
-                        {
-                            if (ReStartOffSetY != 0)
-                            {
-                                Debug.WriteLine("Restart:" + ReStartOffSetY + e.TotalY);
-                                OffSetY = ReStartOffSetY + e.TotalY;
-                            }
-                            else
-                            {
-                                Debug.WriteLine("Change:" + e.TotalY);
-                                OffSetY = e.TotalY;
-                            }
-                        }
-                        else
-                        {
-                            Debug.WriteLine("Taille max:" + (SizeUWP - HeightAncre));
-                            OffSetY = (SizeUWP - HeightAncre);
-                            ReStartOffSetY = (SizeUWP - HeightAncre);
-                        }
+                        MoveUWP(e);
                     }
+                    else if (Xamarin.Essentials.DevicePlatform.iOS == Xamarin.Essentials.DeviceInfo.Platform)
+                    {
+                        MoveIOS(e);
+                    }
+                    //else if (Xamarin.Essentials.DevicePlatform.Android == Xamarin.Essentials.DeviceInfo.Platform)
+                    //{
+                    //    MoveDroid(e);
+                    //    //Device.BeginInvokeOnMainThread(async () => );
+                    //}
                     else
                         OffSetY = e.TotalY;
                     break;
@@ -150,6 +239,158 @@ namespace ControlesCustoms.Standard.Stacklayouts
                     //throw new ArgumentOutOfRangeException();
             }
         }
+
+        /// <summary>
+        /// Moves the panel ios.
+        /// </summary>
+        /// <param name="e">E.</param>
+        private void MoveDroid(PanUpdatedEventArgs e)
+        {
+            double positionNotPassed = HeightChildren > Position ? 0 : (Position - HeightChildren + HeightSplitter + 20);
+            if (ReStartOffSetY != 0)
+            {
+                // dépasse pas l'écran
+                if (ReStartOffSetY + e.TotalY <= positionNotPassed)
+                {
+                    Debug.WriteLine("ReStartOffSetY:{0}, y:{1}", (ReStartOffSetY), e.TotalY);
+
+                }
+                else if (ReStartOffSetY + e.TotalY >= Position)
+                {
+                    Debug.WriteLine("Depasse position initial");
+                }
+                else
+                {
+                    Debug.WriteLine("position avant offset:" + (OffSetY));
+                    Debug.WriteLine("mvt avant offset:" + e.TotalY);
+                    //this.TranslateTo(0,
+                    //ReStartOffSetY + e.TotalY, 0, Easing.Linear);
+                    this.TranslationY = ReStartOffSetY + e.TotalY;
+                    OffSetY = ReStartOffSetY + e.TotalY;
+                    Debug.WriteLine("mvt apres offset:" + e.TotalY);
+                    Debug.WriteLine("position apres offset:" + (OffSetY));
+                }
+
+            }
+            else
+            {
+                Debug.WriteLine("1 fois:" + (ReStartOffSetY + e.TotalY));
+                if (Position + e.TotalY <= positionNotPassed)
+                {
+
+                }
+                else if (Position + e.TotalY >= Position)
+                {
+                    Debug.WriteLine("Depasse position initial");
+                }
+                else
+                {
+                    this.TranslationY = Position + e.TotalY;
+                    OffSetY = Position + e.TotalY;
+                }
+
+            }
+        }
+
+        /// <summary>
+        /// Moves the panel ios.
+        /// </summary>
+        /// <param name="e">E.</param>
+        private void MoveIOS(PanUpdatedEventArgs e)
+        {
+            double positionNotPassed = HeightChildren > Position ? 0 : (Position - HeightChildren + HeightSplitter);
+            if (ReStartOffSetY != 0)
+            {
+                // dépasse pas l'écran
+                if (ReStartOffSetY + e.TotalY <= positionNotPassed)
+                {
+                    Debug.WriteLine("ReStartOffSetY:{0}, y:{1}", (ReStartOffSetY), e.TotalY);
+
+                    return;
+                }
+                else if (ReStartOffSetY + e.TotalY >= Position)
+                {
+                    Debug.WriteLine("Depasse position initial");
+                }
+                else
+                {
+                    Debug.WriteLine("position avant offset:" + (OffSetY));
+                    this.TranslationY = ReStartOffSetY + e.TotalY;
+                    OffSetY = ReStartOffSetY + e.TotalY;
+                    Debug.WriteLine("position apres offset:" + (OffSetY));
+                }
+
+            }
+            else
+            {
+                if (Position + e.TotalY <= positionNotPassed)
+                {
+
+                }
+                else if (Position + e.TotalY >= Position)
+                {
+                    Debug.WriteLine("Depasse position initial");
+                }
+                else
+                {
+                    this.TranslationY = Position + e.TotalY;
+                    OffSetY = Position + e.TotalY;
+                }
+
+            }
+        }
+
+        /// <summary>
+        /// Moves the panel uwp.
+        /// </summary>
+        /// <param name="e">E.</param>
+        private void MoveUWP(PanUpdatedEventArgs e)
+        {
+            double positionNotPassed = HeightChildren > Position ? 0 : (Position - HeightChildren + HeightSplitter );
+            if (ReStartOffSetY != 0)
+            {
+                // dépasse pas l'écran
+                if (ReStartOffSetY + e.TotalY <= positionNotPassed)
+                {
+                    ReStartOffSetY = OffSetY;
+                    Debug.WriteLine("ReStartOffSetY:{0}, y:{1}", (ReStartOffSetY), e.TotalY);
+                    return;
+                }
+                else if (ReStartOffSetY + e.TotalY >= Position)
+                {
+                    ReStartOffSetY = Position;
+                    Debug.WriteLine("Depasse position initial");
+                }
+                else
+                {
+                    Debug.WriteLine("position avant offset:" + (OffSetY));
+                    this.TranslationY = ReStartOffSetY + e.TotalY;
+                    OffSetY = ReStartOffSetY + e.TotalY;
+                    Debug.WriteLine("position apres offset:" + (OffSetY));
+                }
+
+            }
+            else
+            {
+                if (Position + e.TotalY <= positionNotPassed)
+                {
+
+                }
+                else if (Position + e.TotalY >= Position)
+                {
+                    Debug.WriteLine("Depasse position initial");
+                }
+                else
+                {
+                    this.TranslationY = Position + e.TotalY;
+                    OffSetY = Position + e.TotalY;
+                }
+
+            }
+        }
+
+
+        #endregion
 
     }
 

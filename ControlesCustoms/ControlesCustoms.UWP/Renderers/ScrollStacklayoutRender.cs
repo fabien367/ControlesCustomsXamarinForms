@@ -24,41 +24,18 @@ namespace ControlesCustoms.UWP.Renderers
             base.OnElementChanged(e);
             if (e.NewElement != null)
             {
-                Debug.WriteLine("1er fois");
-                var nativeControl = Control as ScrollStacklayoutPreview;
                 _control = e.NewElement;
-
-                _control.Children.Add(new ScrollStacklayoutPreview());
+                _control.HeightNavigation = ApplicationView.GetForCurrentView().VisibleBounds.Height;
             }
         }
 
         protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            var size = ApplicationView.GetForCurrentView().VisibleBounds;
-            _control.SizeUWP = size.Height;
-            if (e.PropertyName == "OffSetY")
+            if (e.PropertyName== "Height")
             {
-                var retour = _control.OffSetY;
-                Debug.WriteLine("Position en mouvement: " + retour);
-
-                RenderTransform = new CompositeTransform() { TranslateY = retour };
+                _control.HeightNavigation = ApplicationView.GetForCurrentView().VisibleBounds.Height;
             }
-            else if (e.PropertyName == "Height")
-            {
-                _position = _control.TranslationY;
-                _control.TranslationY = (size.Height - _control.HeightAncre);
-                _control.ReStartOffSetY = _control.TranslationY;
-
-                Debug.WriteLine("Position initial du stack: " + e.PropertyName + ":" + _control.TranslationY);
-            }
-
-            else if (e.PropertyName == "Renderer")
-            {
-                _control.TranslationY = (size.Height - _control.HeightAncre);
-                _control.ReStartOffSetY = _control.TranslationY;
-
-                Debug.WriteLine("Position initial du stack: " + e.PropertyName + ":" + _control.TranslationY);
-            }
+            
             base.OnElementPropertyChanged(sender, e);
         }
     }

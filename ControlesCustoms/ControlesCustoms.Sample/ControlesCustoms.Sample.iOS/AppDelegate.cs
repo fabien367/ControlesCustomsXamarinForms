@@ -22,6 +22,7 @@ namespace ControlesCustoms.Sample.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
+            ControlesCustoms.iOS.Renderers.ScrollStacklayoutRenderer.Initialize();
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
 
