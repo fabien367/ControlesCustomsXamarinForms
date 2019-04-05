@@ -2,13 +2,13 @@
 
 # Visual rendering
 
-UWP
+### UWP
 ![UWP](https://user-images.githubusercontent.com/20682036/55613449-03f57780-578b-11e9-9017-d90e5e18ca77.gif)
 
-Android
+### Android
 ![Android](https://user-images.githubusercontent.com/20682036/55613444-01931d80-578b-11e9-8223-119e33a6ba6d.gif)
 
-iOS
+### iOS
 ![ios](https://user-images.githubusercontent.com/20682036/55613454-0657d180-578b-11e9-8c2e-4d86624d7188.gif)
 
 
@@ -20,15 +20,18 @@ There is a bug for adding image in Xamarin Forms to get around it you have to ge
 `<DisableWin2DPlatformCheck>true</DisableWin2DPlatformCheck>`
  in your csproj UWP
 
-Configuration Android
+### Configuration Android
 
 Add in MainActivity.cs
 `ScrollStacklayoutRender.Init();`
-            
+### Configuration iOS
+
+Add in AppDelegate
+`ControlesCustoms.iOS.Renderers.ScrollStacklayoutRenderer.Initialize();`
 
 # Code Xamarin Forms
 
-![XamlSample](https://user-images.githubusercontent.com/20682036/54189813-dc283200-44b2-11e9-933b-66eb191b1fe8.jpg)
+![XamlSample](https://user-images.githubusercontent.com/20682036/55613990-508d8280-578c-11e9-8726-6ae80566969a.jpg)
 
 
 
