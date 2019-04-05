@@ -3,10 +3,13 @@
 # Visual rendering
 
 UWP
-![UWP](https://user-images.githubusercontent.com/20682036/54188985-227c9180-44b1-11e9-87c9-4b5e122b1299.gif)
+![UWP](https://user-images.githubusercontent.com/20682036/55613449-03f57780-578b-11e9-9017-d90e5e18ca77.gif)
 
 Android
-![Android](https://user-images.githubusercontent.com/20682036/54190851-fc58f080-44b4-11e9-944d-f75904558f6c.gif)
+![Android](https://user-images.githubusercontent.com/20682036/55613444-01931d80-578b-11e9-8223-119e33a6ba6d.gif)
+
+iOS
+![ios](https://user-images.githubusercontent.com/20682036/55613454-0657d180-578b-11e9-8c2e-4d86624d7188.gif)
 
 
 Configuration UWP for add Image with Xamarin Form 3.6
